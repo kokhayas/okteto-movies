@@ -1,0 +1,7 @@
+api:
+  replicaCount: 1
+  image: okteto/getting-started:api
+
+frontend:
+  replicaCount: 1
+  image: okteto/getting-started:frontend

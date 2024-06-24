@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: seed
+spec:
+  activeDeadlineSeconds: 500000
+  completions: 1
+  template:
+    metadata:
+      labels:
+        job-name: "seed"
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: seed
+          image: okteto/getting-started:api
+          command:
+            - yarn
+            - load
+          env:
+            - name: MONGODB_HOST
+              value: mongodb
+            - name: MONGODB_PASSWORD
+              value: password
+            - name: MONGODB_DATABASE
+              value: okteto
+            - name: MONGODB_USERNAME
+              value: okteto
